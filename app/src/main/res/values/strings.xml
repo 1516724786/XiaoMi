@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">练   手</string>
+
+    <string name="userName_edit">电话号码/邮箱</string>
+    <string name="password_edit">密码</string>
+    <string name="password_again">确认密码</string>
+    <string name="login">登  录</string>
+
+    <string name="register">注册~</string>
+</resources>
