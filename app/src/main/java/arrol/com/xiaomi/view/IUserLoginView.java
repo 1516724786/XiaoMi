@@ -1,6 +1,8 @@
 package arrol.com.xiaomi.view;
 
-import arrol.com.xiaomi.bean.User;
+import android.content.Context;
+
+import cn.bmob.v3.BmobUser;
 
 /**
  * Created by User on 2016/3/26.
@@ -11,6 +13,7 @@ public interface IUserLoginView {
     void toRegisterActivity();
     void showLoading();
     void hideLoading();
-    void  toMainActivity(User user);
-    void showFailedError();
+    void  toMainActivity(BmobUser user);
+    void showFailedError(String s);
+    Context getContext();
 }

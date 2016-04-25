@@ -1,5 +1,6 @@
 package arrol.com.xiaomi;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -15,10 +16,12 @@ import java.util.concurrent.ThreadPoolExecutor;
 import arrol.com.xiaomi.bean.User;
 import arrol.com.xiaomi.presenter.UserLoginPresenter;
 import arrol.com.xiaomi.view.IUserLoginView;
+import arrol.com.xiaomi.view.activity.MainActivity;
 import arrol.com.xiaomi.view.activity.RegisterActivity;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import cn.bmob.v3.BmobUser;
 
 public class LoginActivity extends AppCompatActivity implements IUserLoginView{
 
@@ -67,6 +70,7 @@ public class LoginActivity extends AppCompatActivity implements IUserLoginView{
         Intent intent=new Intent();
         intent.setClass(LoginActivity.this, RegisterActivity.class);
         startActivity(intent);
+        finish();
     }
 
     @Override
@@ -80,13 +84,22 @@ public class LoginActivity extends AppCompatActivity implements IUserLoginView{
     }
 
     @Override
-    public void toMainActivity(User user) {
-        Toast.makeText(this,"success",Toast.LENGTH_SHORT).show();
+    public void toMainActivity(BmobUser user) {
+        Toast.makeText(this,"登录成功",Toast.LENGTH_SHORT).show();
+        Intent intent=new Intent();
+        intent.setClass(LoginActivity.this, MainActivity.class);
+        startActivity(intent);
+        finish();
     }
 
     @Override
-    public void showFailedError() {
-        Toast.makeText(this,"onError",Toast.LENGTH_SHORT).show();
+    public void showFailedError(String s) {
+        Toast.makeText(this,"登录失败："+s,Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public Context getContext() {
+        return this;
     }
 
 }

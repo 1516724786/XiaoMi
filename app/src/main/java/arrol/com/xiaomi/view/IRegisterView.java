@@ -1,17 +1,20 @@
 package arrol.com.xiaomi.view;
 
-import arrol.com.xiaomi.bean.User;
+import android.content.Context;
+
+import cn.bmob.v3.BmobUser;
 
 /**
  * Created by User on 2016/3/29.
  */
 public interface IRegisterView {
+    Context getContext();
     String getUserName();
     String getPassword();
     String getPasswordAgain();
     void showLoading();
     void hideLoading();
-    void  toMainActivity(User user);
+    void  toMainActivity(BmobUser user);
     void toLoginActivity();
-    void showFailedError();
+    void showFailedError(String s);
 }

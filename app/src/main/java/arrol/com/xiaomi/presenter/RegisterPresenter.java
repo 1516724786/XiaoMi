@@ -6,6 +6,7 @@ import arrol.com.xiaomi.bean.User;
 import arrol.com.xiaomi.biz.registerBiz.OnRegisterListener;
 import arrol.com.xiaomi.biz.registerBiz.RegisterBiz;
 import arrol.com.xiaomi.view.IRegisterView;
+import cn.bmob.v3.BmobUser;
 
 /**
  * Created by User on 2016/3/29.
@@ -20,11 +21,11 @@ public class RegisterPresenter {
     }
     public void register(){
         registerView.showLoading();
-        registerBiz.register(registerView.getUserName(),
+        registerBiz.register(registerView.getContext(),registerView.getUserName(),
                 registerView.getPassword(), registerView.getPasswordAgain(),
                 new OnRegisterListener() {
             @Override
-            public void registerSuccess(final User user) {
+            public void registerSuccess(final BmobUser user) {
                 handler.post(new Runnable() {
                     @Override
                     public void run() {
@@ -35,12 +36,12 @@ public class RegisterPresenter {
             }
 
             @Override
-            public void registerFailed() {
+            public void registerFailed(final String s) {
                 handler.post(new Runnable() {
                     @Override
                     public void run() {
                         registerView.hideLoading();
-                        registerView.showFailedError();
+                        registerView.showFailedError(s);
                     }
                 });
             }

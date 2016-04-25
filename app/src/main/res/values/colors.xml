@@ -5,6 +5,9 @@
     <color name="colorAccent">#FF4081</color>
     <color name="transparent">#00000000</color>
     <color name="blue">#42c0f5</color>
-    <color name="textColor">#181717</color>
+    <color name="textColor">#262525</color>
     <color name="hintColor">#848383</color>
+
+    <color name="blue_drawer_header">#ff3c7ffd</color>
+    <color name="white_drawer">#edf1f4</color>
 </resources>

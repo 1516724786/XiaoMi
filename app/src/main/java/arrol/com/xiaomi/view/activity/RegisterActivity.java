@@ -1,5 +1,6 @@
 package arrol.com.xiaomi.view.activity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -16,6 +17,8 @@ import arrol.com.xiaomi.presenter.RegisterPresenter;
 import arrol.com.xiaomi.view.IRegisterView;
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import cn.bmob.v3.Bmob;
+import cn.bmob.v3.BmobUser;
 
 public class RegisterActivity extends AppCompatActivity implements IRegisterView{
 
@@ -52,6 +55,11 @@ public class RegisterActivity extends AppCompatActivity implements IRegisterView
     }
 
     @Override
+    public Context getContext() {
+        return this;
+    }
+
+    @Override
     public String getUserName() {
         return userName.getText().toString();
     }
@@ -77,21 +85,24 @@ public class RegisterActivity extends AppCompatActivity implements IRegisterView
     }
 
     @Override
-    public void toMainActivity(User user) {
-        Toast.makeText(this,"success",Toast.LENGTH_SHORT).show();
+    public void toMainActivity(BmobUser user) {
+        Toast.makeText(this,"注册成功~",Toast.LENGTH_SHORT).show();
+        Intent intent=new Intent();
+        intent.setClass(RegisterActivity.this,MainActivity.class);
+        startActivity(intent);
+        finish();
     }
 
     @Override
     public void toLoginActivity() {
         Intent intent=new Intent();
         intent.setClass(RegisterActivity.this, LoginActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
         finish();
     }
 
     @Override
-    public void showFailedError() {
-        Toast.makeText(this,"onError",Toast.LENGTH_SHORT).show();
+    public void showFailedError(String s) {
+        Toast.makeText(this,"注册失败："+s,Toast.LENGTH_SHORT).show();
     }
 }

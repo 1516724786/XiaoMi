@@ -7,6 +7,7 @@ import arrol.com.xiaomi.bean.User;
 import arrol.com.xiaomi.biz.loginBiz.OnLoginListener;
 import arrol.com.xiaomi.biz.loginBiz.UserBiz;
 import arrol.com.xiaomi.view.IUserLoginView;
+import cn.bmob.v3.BmobUser;
 
 /**
  * Created by User on 2016/3/26.
@@ -25,9 +26,9 @@ public class UserLoginPresenter {
 
     public void login(){
         loginView.showLoading();
-        userBiz.login(loginView.getUserName(), loginView.getPassword(), new OnLoginListener() {
+        userBiz.login(loginView.getContext(),loginView.getUserName(), loginView.getPassword(), new OnLoginListener() {
             @Override
-            public void loginSuccess(final User user) {
+            public void loginSuccess(final BmobUser user) {
                 mHandler.post(new Runnable() {
                     @Override
                     public void run() {
@@ -38,12 +39,12 @@ public class UserLoginPresenter {
             }
 
             @Override
-            public void loginFailed() {
+            public void loginFailed(final String s) {
                 mHandler.post(new Runnable() {
                     @Override
                     public void run() {
                         loginView.hideLoading();
-                        loginView.showFailedError();
+                        loginView.showFailedError(s);
                     }
                 });
             }
