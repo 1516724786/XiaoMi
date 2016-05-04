@@ -12,12 +12,36 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         >
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="6dp"
             android:background="@color/blue_drawer_header"
-            android:text="hello world"
-            />
+            >
+            <Button
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:background="@mipmap/ic_menu"
+                android:id="@+id/menu_main"
+                />
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:background="@color/blue_drawer_header"
+                android:textColor="@color/textColor_white"
+                android:gravity="center"
+                android:textSize="22sp"
+                android:text="hello world"
+                />
+            <Button
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:visibility="invisible"
+                />
+        </LinearLayout>
+
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"

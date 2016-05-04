@@ -11,8 +11,8 @@
             >
         </item>
         <item
-            android:icon="@mipmap/ic_contacts"
-            android:title="contacts"
+            android:icon="@mipmap/ic_secret"
+            android:title="secret"
             android:id="@+id/ic_contacts"
             >
         </item>

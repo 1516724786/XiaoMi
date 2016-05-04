@@ -15,7 +15,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".LoginActivity">
+        <activity android:name=".view.activity.BlinkActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -23,6 +23,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".view.activity.RegisterActivity" />
+        <activity android:name=".LoginActivity"/>
         <activity android:name=".view.activity.MainActivity"></activity>
     </application>
 

@@ -7,25 +7,31 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.Toast;
 
 import arrol.com.xiaomi.R;
 import arrol.com.xiaomi.view.MyFragment.AddAlertFragment;
 import arrol.com.xiaomi.view.MyFragment.AddNoteFragment;
-import arrol.com.xiaomi.view.MyFragment.ContactsFragment;
+import arrol.com.xiaomi.view.MyFragment.SecretFragment;
 import arrol.com.xiaomi.view.MyFragment.HomeFragment;
 import arrol.com.xiaomi.view.MyFragment.SettingFragment;
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class MainActivity extends AppCompatActivity {
 
     @Bind(R.id.navigation_main) NavigationView navigationView;
     @Bind(R.id.drawerLayout)DrawerLayout drawerLayout;
+    @Bind(R.id.drawer_header_circleView)CircleImageView circleImageView;
+    @Bind(R.id.menu_main)Button menu;
 
     private AddNoteFragment noteFragment;
     private HomeFragment homeFragment;
     private SettingFragment settingFragment;
-    private ContactsFragment contactsFragment;
+    private SecretFragment contactsFragment;
     private AddAlertFragment alertFragment;
 
     @Override
@@ -47,13 +53,28 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void initView(){
+
+        circleImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(MainActivity.this,"hello",Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        menu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                drawerLayout.openDrawer(navigationView);
+            }
+        });
+
         final FragmentManager fragmentManager=getFragmentManager();
 
         homeFragment=new HomeFragment();
         noteFragment=new AddNoteFragment();
         settingFragment=new SettingFragment();
         alertFragment=new AddAlertFragment();
-        contactsFragment=new ContactsFragment();
+        contactsFragment=new SecretFragment();
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -80,7 +101,6 @@ public class MainActivity extends AppCompatActivity {
                 fragmentTransaction.commit();
                 drawerLayout.closeDrawers();
                 return true;
-
             }
         });
     }

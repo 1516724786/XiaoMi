@@ -12,6 +12,7 @@ public class MyApplication extends Application{
     @Override
     public void onCreate(){
         super.onCreate();
+        //初始化Bmob
         Bmob.initialize(this,"0b8e9e334abe15d16b8865c13b77336f");
     }
 
