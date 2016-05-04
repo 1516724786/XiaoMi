@@ -13,7 +13,7 @@ import android.widget.Toast;
 
 import arrol.com.xiaomi.R;
 import arrol.com.xiaomi.view.MyFragment.AddAlertFragment;
-import arrol.com.xiaomi.view.MyFragment.AddNoteFragment;
+import arrol.com.xiaomi.view.MyFragment.ShowFragment;
 import arrol.com.xiaomi.view.MyFragment.SecretFragment;
 import arrol.com.xiaomi.view.MyFragment.HomeFragment;
 import arrol.com.xiaomi.view.MyFragment.SettingFragment;
@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
     @Bind(R.id.drawer_header_circleView)CircleImageView circleImageView;
     @Bind(R.id.menu_main)Button menu;
 
-    private AddNoteFragment noteFragment;
+    private ShowFragment noteFragment;
     private HomeFragment homeFragment;
     private SettingFragment settingFragment;
     private SecretFragment contactsFragment;
@@ -71,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
         final FragmentManager fragmentManager=getFragmentManager();
 
         homeFragment=new HomeFragment();
-        noteFragment=new AddNoteFragment();
+        noteFragment=new ShowFragment();
         settingFragment=new SettingFragment();
         alertFragment=new AddAlertFragment();
         contactsFragment=new SecretFragment();
