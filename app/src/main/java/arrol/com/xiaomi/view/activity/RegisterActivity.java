@@ -12,12 +12,10 @@ import android.widget.Toast;
 
 import arrol.com.xiaomi.LoginActivity;
 import arrol.com.xiaomi.R;
-import arrol.com.xiaomi.bean.User;
 import arrol.com.xiaomi.presenter.RegisterPresenter;
 import arrol.com.xiaomi.view.IRegisterView;
 import butterknife.Bind;
 import butterknife.ButterKnife;
-import cn.bmob.v3.Bmob;
 import cn.bmob.v3.BmobUser;
 
 public class RegisterActivity extends AppCompatActivity implements IRegisterView{

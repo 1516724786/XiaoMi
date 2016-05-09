@@ -11,16 +11,12 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.concurrent.ThreadPoolExecutor;
-
-import arrol.com.xiaomi.bean.User;
 import arrol.com.xiaomi.presenter.UserLoginPresenter;
 import arrol.com.xiaomi.view.IUserLoginView;
 import arrol.com.xiaomi.view.activity.MainActivity;
 import arrol.com.xiaomi.view.activity.RegisterActivity;
 import butterknife.Bind;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 import cn.bmob.v3.BmobUser;
 
 public class LoginActivity extends AppCompatActivity implements IUserLoginView{

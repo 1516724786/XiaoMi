@@ -2,9 +2,6 @@ package arrol.com.xiaomi.biz.loginBiz;
 
 import android.content.Context;
 
-import arrol.com.xiaomi.bean.User;
-import arrol.com.xiaomi.biz.loginBiz.IUserBiz;
-import arrol.com.xiaomi.biz.loginBiz.OnLoginListener;
 import cn.bmob.v3.BmobUser;
 import cn.bmob.v3.listener.SaveListener;
 

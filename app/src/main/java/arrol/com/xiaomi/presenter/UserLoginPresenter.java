@@ -3,7 +3,6 @@ package arrol.com.xiaomi.presenter;
 
 import android.os.Handler;
 
-import arrol.com.xiaomi.bean.User;
 import arrol.com.xiaomi.biz.loginBiz.OnLoginListener;
 import arrol.com.xiaomi.biz.loginBiz.UserBiz;
 import arrol.com.xiaomi.view.IUserLoginView;
@@ -11,6 +10,7 @@ import cn.bmob.v3.BmobUser;
 
 /**
  * Created by User on 2016/3/26.
+ *
  */
 public class UserLoginPresenter {
 

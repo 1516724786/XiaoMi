@@ -8,4 +8,9 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="MyDialog" parent="@android:style/Theme.DeviceDefault.Dialog.NoActionBar">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowBackground">@color/transparent</item>
+    </style>
+
 </resources>

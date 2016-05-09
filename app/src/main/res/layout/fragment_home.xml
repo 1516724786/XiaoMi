@@ -32,5 +32,6 @@
         android:src="@mipmap/add"
         app:backgroundTint="@color/blue"
         app:rippleColor="@color/blue_drawer_header"
+        android:id="@+id/floatingActionButton"
         />
 </RelativeLayout>

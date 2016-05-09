@@ -5,8 +5,30 @@
     <string name="password_edit">密码</string>
     <string name="password_again">确认密码</string>
     <string name="login">登  录</string>
-
     <string name="register">注册~</string>
+
+    <!--activity_add_record对应的string -->
+    <string name="out">支出</string>
+    <string name="in">收入</string>
+    <string name="kind">收入/支出：</string>
+    <string name="time">时间：</string>
+    <string name="money">金额：</string>
+    <string name="category">类别：</string>
+    <string name="remark">标记：</string>
+    <string name="record_title">新建记录</string>
+    <string name="food">饮食</string>
+    <string name="cloth">服装</string>
+    <string name="rent">房租</string>
+    <string name="trip">旅途</string>
+    <string name="other">其它</string>
+    <string name="sure">确 定</string>
+
+    <!--activity_add_record对应的strings -->
+    <string name="phoneNumber">电话号码</string>
+    <string name="email">邮箱</string>
+    <string name="change_password">修改密码</string>
+    <string name="exit">退 出</string>
+
 
 
 </resources>
