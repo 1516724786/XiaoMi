@@ -43,7 +43,7 @@ public class AdapterGridView extends BaseAdapter{
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
-        ViewHolder viewHolder = null;
+        ViewHolder viewHolder;
 
         if(convertView == null){
             convertView=mInflater.inflate(R.layout.item_gridview_secret,null);

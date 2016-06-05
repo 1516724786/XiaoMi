@@ -10,16 +10,20 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RadioGroup;
-import android.widget.Switch;
 import android.widget.Toast;
 
+import java.util.Calendar;
+import java.util.HashMap;
+
 import arrol.com.xiaomi.R;
+import arrol.com.xiaomi.bean.MonthTotalOut;
 import arrol.com.xiaomi.bean.Record;
 import arrol.com.xiaomi.presenter.AddRecordPresenter;
 import arrol.com.xiaomi.view.IAddRecordView;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import cn.bmob.v3.BmobUser;
+import cn.bmob.v3.listener.UpdateListener;
 
 public class AddRecordActivity extends AppCompatActivity implements IAddRecordView {
 
@@ -43,14 +47,24 @@ public class AddRecordActivity extends AppCompatActivity implements IAddRecordVi
 
     private AddRecordPresenter presenter =new AddRecordPresenter(this);
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_record);
         ButterKnife.bind(this);
+        initView();
         initEvent();
+
+    }
+    private void initView(){
         radioGroup_kind.check(R.id.out_record);
         radioGroup_category.check(R.id.food_record);
+
+        Calendar calendar=Calendar.getInstance();
+        time_record.setText(calendar.get(Calendar.YEAR)+"年"+(calendar.get(Calendar.MONTH)+1)+"月"
+        +calendar.get(Calendar.DATE)+"日"+calendar.get(Calendar.HOUR_OF_DAY)+"时"
+        +calendar.get(Calendar.MINUTE)+"分");
     }
     private void initEvent(){
 
@@ -109,7 +123,9 @@ public class AddRecordActivity extends AppCompatActivity implements IAddRecordVi
             }
         }
 
-        record.setMoney(amount_record.getText().toString());
+        if(!amount_record.getText().toString().equals("")){
+            record.setMoney(Float.parseFloat(amount_record.getText().toString()));
+        }
         record.setTime(time_record.getText().toString());
         record.setRemark(remark_record.getText().toString());
         record.setUser(BmobUser.getCurrentUser(this,BmobUser.class));
@@ -147,6 +163,6 @@ public class AddRecordActivity extends AppCompatActivity implements IAddRecordVi
     @Override
     public void showFailedError(String s) {
 
-        Toast.makeText(this,s,Toast.LENGTH_SHORT).show();
+        Toast.makeText(this,"提交失败："+s,Toast.LENGTH_SHORT).show();
     }
 }

@@ -10,7 +10,7 @@ import cn.bmob.v3.BmobUser;
 public class Record extends BmobObject{
     private String remark;
     private String time;
-    private String money;
+    private Float money;
     private BmobUser user;//记录的创建者
     private String kind;//记录的种类，支出或者收入
     private String category;//支出里面的种类
@@ -41,12 +41,11 @@ public class Record extends BmobObject{
         this.user = user;
     }
 
-    public String getMoney() {
-
+    public float getMoney() {
         return money;
     }
 
-    public void setMoney(String money) {
+    public void setMoney(float money) {
         this.money = money;
     }
 
