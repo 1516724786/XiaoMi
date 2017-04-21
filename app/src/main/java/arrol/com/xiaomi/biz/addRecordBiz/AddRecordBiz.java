@@ -43,7 +43,7 @@ public class AddRecordBiz implements IAddRecordBiz{
 
     private void Judge(final Context context, final Record record, final IPostDataListener listener){
         Calendar calendar=Calendar.getInstance();
-        final String str=new String(calendar.get(Calendar.YEAR)+"年"+calendar.get(Calendar.MONTH)+1+"月");
+        final String str=new String(calendar.get(Calendar.YEAR)+"年"+(calendar.get(Calendar.MONTH)+1)+"月");
         new Thread(){
             @Override
             public void run(){

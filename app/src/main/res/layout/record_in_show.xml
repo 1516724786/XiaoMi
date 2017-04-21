@@ -9,6 +9,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/record_in_myListView"
+        android:divider="#ececec"
+        android:dividerHeight="4dp"
         >
     </arrol.com.xiaomi.customView.MyListView>
 </android.support.v4.widget.SwipeRefreshLayout>

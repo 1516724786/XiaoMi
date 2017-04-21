@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_ps_record"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="arrol.com.xiaomi.view.activity.sq_helper.PsRecordActivity">
+
+    <include layout="@layout/toolbar"
+        android:id="@+id/include_toolbar"
+        />
+
+  <!--  <TextView
+        android:id="@+id/tv_psRecord_title"
+        android:layout_width="match_parent"
+        android:layout_height="50dip"
+        android:background="@color/blue_drawer_header"
+        android:gravity="center"
+        android:text="@string/password_record"
+        android:textColor="@color/textColor_white"
+        android:textSize="24sp" />-->
+
+    <ListView
+        android:id="@+id/Sq_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginRight="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginBottom="12dp"
+        android:layout_below="@id/include_toolbar"
+        android:scrollbars="none"
+        >
+
+    </ListView>
+
+    <android.support.design.widget.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/add"
+        app:backgroundTint="@color/blue"
+        app:rippleColor="@color/blue_drawer_header"
+        android:id="@+id/bt_sq_float"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="12dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+         />
+
+</RelativeLayout>

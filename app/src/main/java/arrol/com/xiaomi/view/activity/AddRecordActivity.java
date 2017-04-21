@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -41,6 +42,8 @@ public class AddRecordActivity extends AppCompatActivity implements IAddRecordVi
     LinearLayout linearLayout;
     @Bind(R.id.progress_record)
     ProgressBar progressBar;
+    @Bind(R.id.toolbar)
+    Toolbar toolbar;
 
     @Bind(R.id.sure_record)
     Button sure;
@@ -53,18 +56,32 @@ public class AddRecordActivity extends AppCompatActivity implements IAddRecordVi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_record);
         ButterKnife.bind(this);
+        initToolbar();
         initView();
         initEvent();
 
     }
+
+    private void initToolbar(){
+        toolbar.setTitle("新建记录");
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+    }
+
     private void initView(){
         radioGroup_kind.check(R.id.out_record);
         radioGroup_category.check(R.id.food_record);
 
         Calendar calendar=Calendar.getInstance();
-        time_record.setText(calendar.get(Calendar.YEAR)+"年"+(calendar.get(Calendar.MONTH)+1)+"月"
-        +calendar.get(Calendar.DATE)+"日"+calendar.get(Calendar.HOUR_OF_DAY)+"时"
-        +calendar.get(Calendar.MINUTE)+"分");
+        time_record.setText(calendar.get(Calendar.YEAR)+"."+(calendar.get(Calendar.MONTH)+1)+"."
+        +calendar.get(Calendar.DATE)+"  "+calendar.get(Calendar.HOUR_OF_DAY)+":"
+        +calendar.get(Calendar.MINUTE));
     }
     private void initEvent(){
 
@@ -164,5 +181,13 @@ public class AddRecordActivity extends AppCompatActivity implements IAddRecordVi
     public void showFailedError(String s) {
 
         Toast.makeText(this,"提交失败："+s,Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public boolean isReady() {
+        if (!amount_record.getText().toString().equals(""))
+            return true;
+        else
+            return false;
     }
 }

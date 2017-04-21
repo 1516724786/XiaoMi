@@ -102,11 +102,13 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:id="@+id/bt_exit_setting"
         android:layout_marginLeft="24dp"
         android:layout_marginRight="24dp"
         android:layout_marginBottom="72dp"
         android:background="@drawable/button_exit_selector"
         android:textSize="22sp"
         android:text="@string/exit"
+
         />
 </LinearLayout>

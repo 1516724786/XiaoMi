@@ -7,17 +7,8 @@
     android:background="@mipmap/background"
     tools:context=".LoginActivity">
 
-    <Button
-        android:layout_width="35dp"
-        android:layout_height="25dp"
-        android:id="@+id/back_register"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="8dp"
-        android:background="@mipmap/back"
-        />
-
     <TextView
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="50dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/app_name"
@@ -123,6 +114,17 @@
         android:layout_marginRight="32dp"
         android:id="@+id/button_register"
         android:text="@string/register"
+        />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/bt_back_login"
+        android:background="@drawable/button_selector2"
+        android:textSize="20sp"
+        android:layout_marginTop="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginRight="32dp"
+        android:text="@string/back_login"
         />
     <ProgressBar
         android:layout_width="30dp"

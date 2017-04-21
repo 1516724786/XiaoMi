@@ -1,11 +1,13 @@
 <resources>
-    <string name="app_name">练   手</string>
+    <string name="app_name">晓 密</string>
 
     <string name="userName_edit">电话号码/邮箱</string>
     <string name="password_edit">密码</string>
     <string name="password_again">确认密码</string>
     <string name="login">登  录</string>
-    <string name="register">注册~</string>
+    <string name="back_login">返回登录</string>
+    <string name="fast_register">快速注册</string>
+    <string name="register">注 册</string>
 
     <!--activity_add_record对应的string -->
     <string name="out">支出</string>
@@ -29,6 +31,31 @@
     <string name="change_password">修改密码</string>
     <string name="exit">退 出</string>
 
+    <!--MainActivity-->
+    <string name="bill">账单</string>
+    <string name="memo">备忘录</string>
+    <string name="password_record">密码本</string>
+    <string name="bill_total">账单总览</string>
+    <string name="setting">设置</string>
 
+    <!--sq_helper-->
+    <string name="reFresh">刷新</string>
+    <string name="activity_sq">晓密本</string>
+    <string name="title_activity_sq_update">Sq_update</string>
+    <string name="update_text">修 改</string>
+    <string name="delete">删 除</string>
+    <string name="update">更 新</string>
+    <string name="userName">用户名:</string>
+    <string name="passWord">密 码：</string>
+    <string name="mark">备注:</string>
+    <string name="new_build">新建</string>
+
+    <!--add_alert-->
+    <string name="select_date">选择日期</string>
+    <string name="select_time">选择时间</string>
+    <string name="no_remark">暂无~</string>
+    
+    <!--show_fragment-->
+    <string name="loading">正在加载...</string>
 
 </resources>

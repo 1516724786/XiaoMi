@@ -9,7 +9,6 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,11 +31,10 @@ import butterknife.ButterKnife;
 
 /**
  * Created by User on 2016/4/7.
- *
  */
 public class HomeFragment extends Fragment
         implements SwipeRefreshLayout.OnRefreshListener,
-        MyListView.IReFlashListener,IHomeFragmentView{
+        MyListView.IReFlashListener, IHomeFragmentView {
 
     @Bind(R.id.tabLayout_fragment_home)
     TabLayout tabLayout;
@@ -50,9 +48,10 @@ public class HomeFragment extends Fragment
     private SwipeRefreshLayout refreshLayout_in;
     private MyListView listView_in;
     private MyListView listView_out;
-    private List<Map<String,Object>> dataOut;
+    private List<Map<String, Object>> dataOut;
     private AdapterRecordOut adapterRecordOut;
-    private List<Map<String,Object>> dataIn;
+
+    private List<Map<String, Object>> dataIn;
     private AdapterRecordIn adapterRecordIn;
     private HomeFragmentPresenter presenter;
 
@@ -60,16 +59,14 @@ public class HomeFragment extends Fragment
     private int pageNumberIn;
     private int stateOut;
     private int stateIn;
-    private int distiguish;
-    private final int CACHE=1;//表示先从缓存里面获取数据
-    private final int NETWORK=2;//表示先从网络获取数据
+    private int distinguish;
+    private final int CACHE = 1;//表示先从缓存里面获取数据
+    private final int NETWORK = 2;//表示先从网络获取数据
 
-    private Handler handler;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState)
-    {
+                             Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         ButterKnife.bind(this, view);
         return view;
@@ -80,10 +77,9 @@ public class HomeFragment extends Fragment
         super.onActivityCreated(savedInstanceState);
         dataOut = new ArrayList<>();
         dataIn = new ArrayList<>();
-        presenter=new HomeFragmentPresenter(this);
-        handler=new Handler();
-        stateOut =CACHE;
-        stateIn=CACHE;
+        presenter = new HomeFragmentPresenter(this);
+        stateOut = CACHE;
+        stateIn = CACHE;
         pageNumberOut = 0;
         pageNumberIn = 0;
         initView();
@@ -94,32 +90,32 @@ public class HomeFragment extends Fragment
         presenter.LoadingDataOut(pageNumberOut, stateOut);
 
         listView_in.setInterface(this);
-        adapterRecordIn = new AdapterRecordIn(getActivity(),dataIn);
+        adapterRecordIn = new AdapterRecordIn(getActivity(), dataIn);
         listView_in.setAdapter(adapterRecordIn);
-//        presenter.LoadingDataIn(pageNumberIn, stateIn);
 
         initEvent();
 
     }
-    private void initView(){
+
+    private void initView() {
         /**
          * 将ViewPager与TableLayout结合
          */
-        listTitle=new ArrayList<>();
+        listTitle = new ArrayList<>();
         List<View> listPager = new ArrayList<>();
 
         LayoutInflater mInflater = LayoutInflater.from(getActivity());
         View view1 = mInflater.inflate(R.layout.record_out_show, null);
-        View view2= mInflater.inflate(R.layout.record_in_show, null);
+        View view2 = mInflater.inflate(R.layout.record_in_show, null);
         listPager.add(view1);
         listPager.add(view2);
-        listTitle.add("hello");
-        listTitle.add("world");
+        listTitle.add("支出");
+        listTitle.add("收入");
 
         tabLayout.addTab(tabLayout.newTab().setText(listTitle.get(0)));//添加tab选项卡
         tabLayout.addTab(tabLayout.newTab().setText(listTitle.get(1)));
 
-        MyPagerAdapter mAdapter = new MyPagerAdapter(listPager,listTitle);
+        MyPagerAdapter mAdapter = new MyPagerAdapter(listPager, listTitle);
         viewPager.setAdapter(mAdapter);
         tabLayout.setupWithViewPager(viewPager);
         tabLayout.setTabsFromPagerAdapter(mAdapter);
@@ -127,20 +123,21 @@ public class HomeFragment extends Fragment
         /**
          * 找View1里面的控件
          */
-        refreshLayout_out=(SwipeRefreshLayout)view1.findViewById(R.id.record_out_refresh);
+        refreshLayout_out = (SwipeRefreshLayout) view1.findViewById(R.id.record_out_refresh);
         refreshLayout_out.setColorSchemeResources(android.R.color.holo_blue_bright);
         refreshLayout_out.setOnRefreshListener(this);
-        listView_out=(MyListView)view1.findViewById(R.id.record_out_myListView);
+        listView_out = (MyListView) view1.findViewById(R.id.record_out_myListView);
         /**
          * 找出view2中的控件
          */
-        refreshLayout_in=(SwipeRefreshLayout)view2.findViewById(R.id.record_in_refresh);
+        refreshLayout_in = (SwipeRefreshLayout) view2.findViewById(R.id.record_in_refresh);
         refreshLayout_in.setColorSchemeResources(android.R.color.holo_blue_bright);
         refreshLayout_in.setOnRefreshListener(this);
-        listView_in=(MyListView)view2.findViewById(R.id.record_in_myListView);
+        listView_in = (MyListView) view2.findViewById(R.id.record_in_myListView);
 
     }
-    private void initEvent(){
+
+    private void initEvent() {
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -152,9 +149,10 @@ public class HomeFragment extends Fragment
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-                if (position == 1){
-                    distiguish=1;
-                    presenter.LoadingDataIn(pageNumberIn, stateIn,distiguish);
+                if (position == 1) {
+//                    distinguish = 1;
+                    if (dataIn.size() ==0)
+                        presenter.LoadingDataIn(pageNumberIn, stateIn, distinguish);
                 }
             }
 
@@ -172,14 +170,13 @@ public class HomeFragment extends Fragment
 
     @Override
     public void onRefresh() {
-        stateOut =NETWORK;
+        stateOut = NETWORK;
         stateIn = NETWORK;
         pageNumberOut = 0;//刷新从头再开始！
         pageNumberIn = 0;
-        if(viewPager.getCurrentItem() == 0){
+        if (viewPager.getCurrentItem() == 0) {
             presenter.RefreshDataOut(pageNumberOut);
-        }
-        else {
+        } else {
             presenter.RefreshDataIn(pageNumberIn);
         }
 
@@ -187,28 +184,27 @@ public class HomeFragment extends Fragment
 
     @Override
     public void onReFlash() {
-        if (viewPager.getCurrentItem() == 0){
+        if (viewPager.getCurrentItem() == 0) {
             pageNumberOut++;
             presenter.LoadingDataOut(pageNumberOut, stateOut);
-        }
-        else {
+        } else {
             pageNumberIn++;
-            if (distiguish == 1){
-                distiguish = 0;
+            if (distinguish == 1) {
+                distinguish = 0;
             }
-            presenter.LoadingDataIn(pageNumberIn, stateIn,distiguish);
+            presenter.LoadingDataIn(pageNumberIn, stateIn, distinguish);
         }
 
     }
 
     @Override
-    public Context getContext(){
+    public Context getContext() {
         return getActivity();
     }
 
     @Override
     public void showFailedError(String s) {
-        Toast.makeText(getActivity(),"Error:"+s,Toast.LENGTH_SHORT).show();
+        Toast.makeText(getActivity(), "Error:" + s, Toast.LENGTH_SHORT).show();
     }
 
     @Override

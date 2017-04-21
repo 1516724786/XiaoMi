@@ -15,4 +15,5 @@ public interface IAddRecordView {
     void hideLoading();
     void toMainActivity();
     void showFailedError(String s);
+    boolean isReady();
 }

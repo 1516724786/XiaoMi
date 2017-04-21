@@ -4,7 +4,7 @@
     <group
         android:checkableBehavior="single">
         <item
-            android:title="home"
+            android:title="@string/bill"
             android:icon="@mipmap/ic_home"
             android:id="@+id/ic_home"
             android:checked="true"
@@ -12,24 +12,24 @@
         </item>
         <item
             android:icon="@mipmap/ic_secret"
-            android:title="secret"
+            android:title="@string/password_record"
             android:id="@+id/ic_contacts"
             >
         </item>
         <item
-            android:title="note add"
+            android:title="@string/bill_total"
             android:icon="@mipmap/ic_note_add"
             android:id="@+id/ic_note_add"
             >
         </item>
         <item
-            android:title="add alert"
+            android:title="@string/memo"
             android:icon="@mipmap/ic_add_alert"
             android:id="@+id/ic_add_alert"
             >
         </item>
         <item
-            android:title="settings"
+            android:title="@string/setting"
             android:icon="@mipmap/ic_settings"
             android:id="@+id/ic_settings"
             >

@@ -9,7 +9,7 @@
 
 
     <TextView
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="50dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/app_name"
@@ -23,7 +23,7 @@
         android:orientation="horizontal"
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="60dp"
         >
         <ImageView
             android:layout_width="50dp"
@@ -88,15 +88,16 @@
         android:text="@string/login"
         />
 
-    <TextView
+    <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dip"
-        android:layout_marginEnd="32dp"
-        android:textSize="19sp"
-        android:text="@string/register"
-        android:id="@+id/register_view_login"
-        android:gravity="start"
+        android:id="@+id/bt_register_loginPg"
+        android:background="@drawable/button_selector2"
+        android:textSize="20sp"
+        android:layout_marginTop="16dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginRight="32dp"
+        android:text="@string/fast_register"
         />
     <ProgressBar
         android:layout_width="wrap_content"

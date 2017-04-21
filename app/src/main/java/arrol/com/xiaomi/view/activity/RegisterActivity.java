@@ -25,7 +25,7 @@ public class RegisterActivity extends AppCompatActivity implements IRegisterView
     @Bind(R.id.password_register)EditText password;
     @Bind(R.id.password_again_register)EditText passwordAgain;
     @Bind(R.id.button_register)Button button_register;
-    @Bind(R.id.back_register)Button button_back;
+    @Bind(R.id.bt_back_login)Button button_back;
     @Bind(R.id.progress_register)ProgressBar progressBar_register;
 
     RegisterPresenter registerPresenter=new RegisterPresenter(this);

@@ -2,6 +2,7 @@ package arrol.com.xiaomi.presenter;
 
 
 import android.os.Handler;
+import android.widget.Toast;
 
 import arrol.com.xiaomi.biz.addRecordBiz.AddRecordBiz;
 import arrol.com.xiaomi.biz.addRecordBiz.IPostDataListener;
@@ -22,29 +23,35 @@ public class AddRecordPresenter {
     }
 
     public void addRecord(){
-        addRecordView.showLoading();
-        addRecordBiz.postData(addRecordView.getContext(), addRecordView.getRecord(), new IPostDataListener() {
-            @Override
-            public void postSuccess() {
-                handler.post(new Runnable() {
-                    @Override
-                    public void run() {
-                        addRecordView.hideLoading();
-                        addRecordView.toMainActivity();
-                    }
-                });
-            }
+        if (addRecordView.isReady()){
+            addRecordView.showLoading();
+            addRecordBiz.postData(addRecordView.getContext(), addRecordView.getRecord(), new IPostDataListener() {
+                @Override
+                public void postSuccess() {
+                    handler.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            addRecordView.hideLoading();
+                            addRecordView.toMainActivity();
+                        }
+                    });
+                }
 
-            @Override
-            public void postFailed(final String s) {
-                handler.post(new Runnable() {
-                    @Override
-                    public void run() {
-                        addRecordView.hideLoading();
-                        addRecordView.showFailedError(s);
-                    }
-                });
-            }
-        });
+                @Override
+                public void postFailed(final String s) {
+                    handler.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            addRecordView.hideLoading();
+                            addRecordView.showFailedError(s);
+                        }
+                    });
+                }
+            });
+        }
+        else {
+            Toast.makeText(addRecordView.getContext(),"金额不为空！",Toast.LENGTH_SHORT).show();
+        }
+
     }
 }

@@ -24,7 +24,7 @@ public class LoginActivity extends AppCompatActivity implements IUserLoginView{
     @Bind(R.id.password_login) EditText password;
     @Bind(R.id.username_login) EditText userName;
     @Bind(R.id.button_login) Button login;
-    @Bind(R.id.register_view_login) TextView register;
+    @Bind(R.id.bt_register_loginPg) Button btRegister;
     @Bind(R.id.progress_login) ProgressBar progressBar;
 
     private UserLoginPresenter presenter=new UserLoginPresenter(this);
@@ -44,7 +44,7 @@ public class LoginActivity extends AppCompatActivity implements IUserLoginView{
                 presenter.login();
             }
         });
-        register.setOnClickListener(new View.OnClickListener() {
+        btRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 presenter.clear();

@@ -53,7 +53,12 @@ public class AdapterRecordIn extends BaseAdapter{
         }
         viewHolder.time.setText(data.get(position).get("time").toString());
         viewHolder.money.setText(data.get(position).get("money").toString());
-        viewHolder.remark.setText(data.get(position).get("remark").toString());
+        if (!data.get(position).get("remark").toString().equals("")){
+            viewHolder.remark.setText(data.get(position).get("remark").toString());
+        }
+        else {
+            viewHolder.remark.setText("暂无~");
+        }
         return convertView;
     }
 

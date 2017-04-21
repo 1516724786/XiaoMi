@@ -1,17 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorPrimary">#3672e4</color>
+    <color name="colorPrimaryDark">#3672e4</color>
     <color name="colorAccent">#77a6ff</color>
 
     <color name="transparent">#00000000</color>
     <color name="blue">#42c0f5</color>
     <color name="textColor">#262525</color>
     <color name="hintColor">#848383</color>
+    <color name="deep_white">#cccccc</color>
 
     <color name="blue_drawer_header">#ff3c7ffd</color>
     <color name="white_drawer">#edf1f4</color>
     <color name="textColor_white">#ffffff</color>
     <color name="divider_color">#d6d7d6</color>
+
+    <!--sq_helper-->
+    <color name="sq_blue">#6495ED</color>
+    <color name="blue1">#48D1CC</color>
+    <color name="blue2">#36648B</color>
+    <color name="divider">#F0FFF0</color>
+    <color name="sq_textColor">#4D4D4D</color>
+    <color name="background">#00000000</color>
+    <color name="blue3">#ff3c7ffd</color>
+    <color name="background2">#fffbfbfb</color>
+    <color name="blue4">#ff4596ff</color>
+    <color name="background3">#ffffff</color>
+    <color name="cancel">#fffc1e0d</color>
+
+    <!--show_fragment-->
+    <color name="show_page_blue">#56abe4</color>
 
 </resources>

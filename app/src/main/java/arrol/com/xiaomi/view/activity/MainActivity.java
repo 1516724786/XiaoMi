@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import arrol.com.xiaomi.R;
@@ -27,12 +28,14 @@ public class MainActivity extends AppCompatActivity {
     @Bind(R.id.drawerLayout)DrawerLayout drawerLayout;
     @Bind(R.id.drawer_header_circleView)CircleImageView circleImageView;
     @Bind(R.id.menu_main)Button menu;
+    @Bind(R.id.tv_main_title)TextView title;
 
     private ShowFragment noteFragment;
     private HomeFragment homeFragment;
     private SettingFragment settingFragment;
     private SecretFragment contactsFragment;
     private AddAlertFragment alertFragment;
+    private long lastTime=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,18 +86,23 @@ public class MainActivity extends AppCompatActivity {
                 menuItem.setChecked(true);
                 switch (menuItem.getItemId()) {
                     case R.id.ic_home:
+                        title.setText(R.string.bill);
                         fragmentTransaction.replace(R.id.frameLayout_main, homeFragment);
                         break;
                     case R.id.ic_note_add:
+                        title.setText(R.string.bill_total);
                         fragmentTransaction.replace(R.id.frameLayout_main, noteFragment);
                         break;
                     case R.id.ic_settings:
+                        title.setText(R.string.setting);
                         fragmentTransaction.replace(R.id.frameLayout_main, settingFragment);
                         break;
                     case R.id.ic_add_alert:
+                        title.setText(R.string.memo);
                         fragmentTransaction.replace(R.id.frameLayout_main,alertFragment);
                         break;
                     case R.id.ic_contacts:
+                        title.setText(R.string.password_record);
                         fragmentTransaction.replace(R.id.frameLayout_main,contactsFragment);
                         break;
                 }
@@ -104,4 +112,21 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+    public void onBackPressed(){
+        if(lastTime<=0){
+            Toast.makeText(this,"再按一次退出！",Toast.LENGTH_SHORT).show();
+            lastTime=System.currentTimeMillis();
+        }
+        else{
+            long clickTime=System.currentTimeMillis();
+            if(clickTime-lastTime<1500){
+                finish();
+            }else{
+                Toast.makeText(this,"再按一次退出！",Toast.LENGTH_SHORT).show();
+                lastTime=clickTime;
+            }
+        }
+    }
+
+
 }

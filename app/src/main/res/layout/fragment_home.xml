@@ -7,13 +7,13 @@
 
     <android.support.design.widget.TabLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="44dp"
         android:layout_alignParentBottom="true"
         android:id="@+id/tabLayout_fragment_home"
         app:tabIndicatorHeight="0dp"
         app:tabMode="fixed"
-        app:tabSelectedTextColor="@color/blue_drawer_header"
-        android:background="#cfcaca"
+        app:tabSelectedTextColor="@color/textColor_white"
+        app:tabTextAppearance="@style/TabTextAppearance"
         >
     </android.support.design.widget.TabLayout>
     <android.support.v4.view.ViewPager
@@ -27,6 +27,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@id/tabLayout_fragment_home"
+        android:layout_marginBottom="6dp"
         android:layout_alignParentEnd="true"
         android:layout_marginEnd="8dp"
         android:src="@mipmap/add"

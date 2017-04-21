@@ -6,9 +6,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import arrol.com.xiaomi.R;
 
@@ -17,14 +20,14 @@ import arrol.com.xiaomi.R;
  */
 public class AdapterRecycler extends RecyclerView.Adapter<AdapterRecycler.MyViewHolder>{
 
-    private List<String> data;
+    private ArrayList<Map<String,String>> data;
     private LayoutInflater inflater;
 
     private OnItemListener listener=null;
     private OnItemLongListener onItemLongListener;
 
 
-    public AdapterRecycler(Context context, List<String> data){
+    public AdapterRecycler(Context context, ArrayList<Map<String,String>> data){
         inflater=LayoutInflater.from(context);
         this.data=data;
     }
@@ -39,12 +42,14 @@ public class AdapterRecycler extends RecyclerView.Adapter<AdapterRecycler.MyView
     public void onBindViewHolder(final MyViewHolder holder, int position) {
 
         if(position < data.size()-1){
-            holder.textView.setVisibility(View.VISIBLE);
+            holder.linly.setVisibility(View.VISIBLE);
             holder.imageView.setVisibility(View.GONE);
-            holder.textView.setText(data.get(position));
+            holder.textView.setText(data.get(position).get("time"));
+            if (!data.get(position).get("remark").equals(""))
+                holder.remark.setText(data.get(position).get("remark"));
         }
         else{
-            holder.textView.setVisibility(View.GONE);
+            holder.linly.setVisibility(View.GONE);
             holder.imageView.setVisibility(View.VISIBLE);
         }
 
@@ -75,10 +80,6 @@ public class AdapterRecycler extends RecyclerView.Adapter<AdapterRecycler.MyView
         return data.size();
     }
 
-    public void addData(int position){
-        data.add(position,"hxb");
-        notifyItemInserted(position);
-    }
 
     public void removeData(int position){
         data.remove(position);
@@ -88,10 +89,14 @@ public class AdapterRecycler extends RecyclerView.Adapter<AdapterRecycler.MyView
     public class MyViewHolder extends RecyclerView.ViewHolder{
         TextView textView;
         ImageView imageView;
+        LinearLayout linly;
+        TextView remark;
         public MyViewHolder(View itemView) {
             super(itemView);
-            textView=(TextView) itemView.findViewById(R.id.item_textView);
+            textView=(TextView) itemView.findViewById(R.id.item_alert_time);
             imageView=(ImageView)itemView.findViewById(R.id.item_imageView);
+            linly=(LinearLayout)itemView.findViewById(R.id.item_alert_linly);
+            remark = (TextView)itemView.findViewById(R.id.item_alert_remark);
         }
     }
 

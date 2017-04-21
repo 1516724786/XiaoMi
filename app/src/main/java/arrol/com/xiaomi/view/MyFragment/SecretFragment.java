@@ -1,6 +1,7 @@
 package arrol.com.xiaomi.view.MyFragment;
 
 import android.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +15,7 @@ import java.util.List;
 
 import arrol.com.xiaomi.R;
 import arrol.com.xiaomi.adapter.AdapterGridView;
+import arrol.com.xiaomi.view.activity.sq_helper.PsRecordActivity;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
@@ -122,7 +124,20 @@ public class SecretFragment extends Fragment{
                     textView3.setText("");
                     textView4.setText("");
                 }
+                if (buffer.length() == 4 && buffer.toString().equals("1234")){
+                    textView1.setText("");
+                    textView2.setText("");
+                    textView3.setText("");
+                    textView4.setText("");
+                    buffer.delete(0,4);
+                    toPsRecordPage();
+                }
             }
         });
+    }
+    private void toPsRecordPage(){
+        Intent intent = new Intent();
+        intent.setClass(getActivity(), PsRecordActivity.class);
+        startActivity(intent);
     }
 }
